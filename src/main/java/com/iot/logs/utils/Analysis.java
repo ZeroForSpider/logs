@@ -319,7 +319,7 @@ public class Analysis {
         long timeDifference = 0;
         long seconds = minutes * 60;
         TimeZones timeZones = new TimeZones();
-        for (int i = 0; i < list.size() - 1 && timeDifference <=seconds; i++) {
+        for (int i = 0; i < list.size() - 1 && timeDifference <= seconds; i++) {
             sumOfTimeZonesList.add(list.get(i));
             timeDifference = OutputLogInfo.timeDifference(list.get(i + 1).getDateTime(), list.get(0).getDateTime());
         }
@@ -346,7 +346,7 @@ public class Analysis {
         timeZones.setLowersum(lowSum);
         timeZones.setMiddleSum(middleSum);
         timeZones.setHigthSum(hightSum);
-        writeLogs("timeZones.txt",timeZones.toString());
+        writeLogs("timeZones.txt", timeZones.toString());
     }
 
 }
@@ -484,12 +484,12 @@ class TimeZones {
     public String
     toString() {
         try {
-            return "时间差:"+ Long.valueOf(OutputLogInfo.timeDifference(nextTime,currentTime)/60)+ "分钟 {" +
+            return "时间差:" + Long.valueOf(OutputLogInfo.timeDifference(nextTime, currentTime) / 60) + "分钟 {" +
                     " " + currentTime + '\'' +
                     " '" + nextTime + '\'' +
-                    ", lowersum=" + lowersum +
-                    ", middleSum=" + middleSum +
-                    ", higthSum=" + higthSum +
+                    ", 低于阀值的总和=" + lowersum +
+                    ", 在阀值之间的总和=" + middleSum +
+                    ", 大于阀门的总和=" + higthSum +
                     '}';
         } catch (ParseException e) {
             e.printStackTrace();
